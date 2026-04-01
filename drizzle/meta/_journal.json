@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1775064696966,
+      "tag": "0000_strange_thor_girl",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1775065100536,
+      "tag": "0001_uneven_loa",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1775066320498,
+      "tag": "0002_blue_logan",
+      "breakpoints": true
+    }
+  ]
+}
