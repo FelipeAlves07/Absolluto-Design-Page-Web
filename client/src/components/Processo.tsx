@@ -1,26 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function Processo() {
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.reveal').forEach((el) => {
-            el.classList.add('visible');
-          });
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  useScrollReveal([]);
 
   const etapas = [
     {

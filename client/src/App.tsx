@@ -8,33 +8,34 @@ import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import CustomFormPage from "./pages/CustomFormPage";
 import Portfolio from "./pages/Portfolio";
+import SobrePage from "./pages/SobrePage";
+import ServicosPage from "./pages/ServicosPage";
+import ProcessoPage from "./pages/ProcessoPage";
+import BriefingPage from "./pages/BriefingPage";
+import ContatoPage from "./pages/ContatoPage";
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/sobre"} component={SobrePage} />
+      <Route path={"/servicos"} component={ServicosPage} />
+      <Route path={"/processo"} component={ProcessoPage} />
       <Route path={"/portfolio"} component={Portfolio} />
+      <Route path={"/briefing"} component={BriefingPage} />
+      <Route path={"/contato"} component={ContatoPage} />
       <Route path={"/admin"} component={Admin} />
       <Route path={"/form/:uniqueLink"} component={CustomFormPage} />
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="dark"
-      >
+      <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
           <Router />

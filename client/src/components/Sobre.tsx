@@ -1,26 +1,9 @@
 import { useEffect, useRef } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export default function Sobre() {
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.reveal').forEach((el) => {
-            el.classList.add('visible');
-          });
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
+  useScrollReveal([]);
 
   const diferenciais = [
     {
@@ -101,7 +84,7 @@ export default function Sobre() {
           </div>
 
           {/* Visual */}
-          <div className="reveal flex items-center justify-center">
+          <div className="reveal-right flex items-center justify-center">
             <div className="relative w-80 h-80 bg-card border border-border flex items-center justify-center overflow-hidden">
               {/* Glow */}
               <div

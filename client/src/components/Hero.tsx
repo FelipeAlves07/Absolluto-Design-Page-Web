@@ -1,21 +1,14 @@
 import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { Link } from 'wouter';
 
 export default function Hero() {
-  const [scrolled, setScrolled] = useState(false);
   const [counters, setCounters] = useState({ exp: 0, pot: 0, proj: 0 });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
     const animateCounters = () => {
-      let exp = 0, pot = 0, proj = 0;
+      let exp = 0,
+        pot = 0,
+        proj = 0;
       const interval = setInterval(() => {
         if (exp < 10) exp++;
         if (pot < 1) pot += 0.1;
@@ -28,7 +21,10 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-20 px-6 md:px-16">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-20 px-6 md:px-16"
+    >
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -94,12 +90,12 @@ export default function Hero() {
           className="flex flex-wrap gap-4 animate-fadeUp"
           style={{ animationDelay: '0.3s' }}
         >
-          <a href="#briefing" className="btn-primary">
+          <Link href="/briefing" className="btn-primary">
             Iniciar Projeto
-          </a>
-          <a href="#servicos" className="btn-outline">
+          </Link>
+          <Link href="/servicos" className="btn-outline">
             Ver Serviços
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -109,18 +105,18 @@ export default function Hero() {
         style={{ animationDelay: '0.5s' }}
       >
         <div className="w-10 h-px bg-border relative overflow-hidden">
-          <div
-            className="w-full h-px bg-orange absolute animate-scrollLine"
-            style={{ animationDelay: '0s' }}
-          />
+          <div className="w-full h-px bg-orange absolute animate-scrollLine" />
         </div>
         <span className="text-xs font-syne font-semibold tracking-widest uppercase text-muted-gray">
-          Scroll
+          Explore
         </span>
       </div>
 
       {/* Counters */}
-      <div className="absolute bottom-10 right-6 md:right-16 hidden lg:flex gap-12 animate-fadeUp" style={{ animationDelay: '0.4s' }}>
+      <div
+        className="absolute bottom-10 right-6 md:right-16 hidden lg:flex gap-12 animate-fadeUp"
+        style={{ animationDelay: '0.4s' }}
+      >
         <div className="text-center">
           <div className="font-bebas text-4xl leading-none bg-gradient-to-r from-blue to-orange bg-clip-text text-transparent">
             {counters.exp}+

@@ -39,6 +39,17 @@ export const appRouter = router({
           formData: JSON.stringify(input.formData),
           status: "novo",
         } as any);
+
+        if (result) {
+          // Send email notification (non-blocking)
+          sendBriefingNotification(
+            input.clientName,
+            input.clientEmail,
+            input.briefingType,
+            input.formData
+          ).catch((err) => console.error('[Email] Failed to send briefing notification:', err));
+        }
+
         return result ? { success: true, id: result.id } : { success: false };
       }),
 
